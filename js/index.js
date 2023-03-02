@@ -27,7 +27,9 @@ const displayFeatres = (features) =>{
                         <p><i class="fa-regular fa-calendar-days"></i> ${feature.published_in}</p>
                     </div>
                     <div>
-                        <button class="border-0 details-btn"><i class="fa-solid fa-arrow-right-long"></i></button>
+                        <button class="border-0 details-btn" data-bs-toggle="modal" data-bs-target="#featureDetailsModal">
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </button>
                     </div>
                 </div>
             </div>
