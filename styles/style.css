@@ -3,3 +3,9 @@
     color: white;
     padding: 25px;
 }
+
+.details-btn{
+    color: #EB5757;
+    border-radius: 50%;
+    padding: 10px;
+}
