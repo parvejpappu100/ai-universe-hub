@@ -86,11 +86,13 @@ const displayFeatreDetails = (details) =>{
         </div>
         <div class="border p-3 rounded-4 text-center">
             <img class="img-fluid" src="${details.image_link[0]}">
-            <h4 class="fw-bold my-3">${details.input_output_examples[0].input}</h4>
+            <h4 class="fw-bold my-2">${details.input_output_examples[0].input}</h4>
             <p>${details.input_output_examples[0].output}</p>
+            <h4 class="fw-bold">${details.input_output_examples[1].input}</h4>
+            <p>${details.input_output_examples[1].output}</p>
         </div>
     `;
-    console.log(details.input_output_examples)
+    console.log(details.input_output_examples[1].input)
 }   
 
 loadFeatures();
