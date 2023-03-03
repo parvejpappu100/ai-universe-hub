@@ -39,3 +39,12 @@
     color: #EB5757;
     font-weight: 700;
 }
+
+.accuracy{
+    background-color: #EB5757;
+    color: white;
+    position: absolute;
+    right: 35px;
+    top: 40px;
+    width: 140px;
+}

@@ -114,12 +114,15 @@ const displayFeatreDetails = (details) =>{
             </div>
         </div>
         <div class="border p-3 rounded-4 text-center">
+            <div>
+                <p class="accuracy rounded fw-semibold">${details.accuracy.score ? details.accuracy.score * 100 + '% ' + "accuracy":""} </p>
+            </div>
             <img class="img-fluid" src="${details.image_link[0]}">
             <h4 class="fw-bold my-2">${details.input_output_examples ? details.input_output_examples[0].input : "Can you give any example?"}</h4>
             <p>${details.input_output_examples ? details.input_output_examples[0].output : "No! Not Yet! Take a break!!!"}</p>
         </div>
     `;
-    console.log()
+    console.log( details.accuracy.score * 100 + "%")
 }   
 
 loadFeatures(6);
