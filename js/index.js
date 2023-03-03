@@ -30,7 +30,7 @@ const displayFeatres = (features , dataLimit) =>{
                 <ol>
                     <li>${feature.features[0]}</li>
                     <li>${feature.features[1]}</li>
-                    <li>${feature.features[2]}</li>
+                    <li>${feature.features[2] ? feature.features[2] : "No data found"}</li>
                 </ol>
                 <hr>
                 <div class="d-flex align-items-center justify-content-between">
@@ -50,7 +50,6 @@ const displayFeatres = (features , dataLimit) =>{
         featruesContainer.appendChild(featureDiv);
         // * Stop loder or spinner:
         toggleSpinner(false);
-        console.log()
     })
 }
 // * add event handler on see more btn:
@@ -83,16 +82,16 @@ const displayFeatreDetails = (details) =>{
             <h5 class="fw-bold">${details.description}</h5>
             <div class="d-flex flex-column d-md-flex flex-md-row gap-3 text-center justify-content-center">
                 <div id="cost1">
-                    <p>${details.pricing[0].price}</p>
-                    <p>${details.pricing[0].plan}</p>
+                    <p>${details.pricing ? details.pricing[0].price : "Free of cost"}</p>
+                    <p>${details.pricing  ? details.pricing[0].plan : "Basic"}</p>
                 </div>
                 <div id="cost2">
-                    <p>${details.pricing[1].price}</p>
-                    <p>${details.pricing[1].plan}</p>
+                    <p>${details.pricing ? details.pricing[1].price : "Free of cost"}</p>
+                    <p>${details.pricing ? details.pricing[1].plan : "Pro"}</p>
                 </div>
                 <div id="cost3">
-                    <p>${details.pricing[2].price}</p>
-                    <p>${details.pricing[2].plan}</p>  
+                    <p>${details.pricing ? details.pricing[2].price : "Free of cost"}</p>
+                    <p>${details.pricing ? details.pricing[2].plan : "Enterprices"}</p>  
                 </div>
             </div>
             <div class="d-flex my-2 gap-4">
@@ -107,22 +106,20 @@ const displayFeatreDetails = (details) =>{
                 <div>
                     <h5 class="fw-bold">Integrations</h5>
                     <ul>
-                        <li>${details.integrations[0]}</li>
-                        <li>${details.integrations[1]}</li>
-                        <li>${details.integrations[2]}</li>
+                        <li>${details.integrations ? details.integrations[0] : "No data found"}</li>
+                        <li>${details.integrations ? details.integrations[1] : "No data found"}</li>
+                        <li>${details.integrations ? details.integrations[2] : "No data found"}</li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="border p-3 rounded-4 text-center">
             <img class="img-fluid" src="${details.image_link[0]}">
-            <h4 class="fw-bold my-2">${details.input_output_examples[0].input}</h4>
-            <p>${details.input_output_examples[0].output}</p>
-            <h4 class="fw-bold">${details.input_output_examples[1].input}</h4>
-            <p>${details.input_output_examples[1].output}</p>
+            <h4 class="fw-bold my-2">${details.input_output_examples ? details.input_output_examples[0].input : "Can you give any example?"}</h4>
+            <p>${details.input_output_examples ? details.input_output_examples[0].output : "No! Not Yet! Take a break!!!"}</p>
         </div>
     `;
-    console.log(details)
+    console.log()
 }   
 
 loadFeatures(6);
