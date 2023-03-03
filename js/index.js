@@ -1,12 +1,24 @@
-const loadFeatures = () =>{
+// * Load Features Data----------:
+const loadFeatures = (dataLimit) =>{
     const url = `https://openapi.programming-hero.com/api/ai/tools`;
     fetch(url)
     .then(res => res.json())
-    .then(data => displayFeatres(data.data.tools))
+    .then(data => displayFeatres(data.data.tools , dataLimit))
 };
-
-const displayFeatres = (features) =>{
+// * Display Features Data--------:
+const displayFeatres = (features , dataLimit) =>{
     const featruesContainer = document.getElementById("features-container");
+    featruesContainer.innerHTML = '';
+    // * To display 6 Features by Default:
+    const seeMore = document.getElementById("see-more");
+    if(dataLimit && features.length > 6){
+        features = features.slice(0,6);
+        seeMore.classList.remove('d-none');
+
+    }
+    else{
+        seeMore.classList.add('d-none');
+    }
     features.forEach(feature =>{
         const featureDiv =document.createElement("div");
         featureDiv.classList.add("col");
@@ -36,16 +48,34 @@ const displayFeatres = (features) =>{
         </div>
         `;
         featruesContainer.appendChild(featureDiv);
+        // * Stop loder or spinner:
+        toggleSpinner(false);
         console.log()
     })
 }
-
+// * add event handler on see more btn:
+document.getElementById("see-more").addEventListener('click',function(){
+    toggleSpinner(true);
+    loadFeatures();
+})
+// * Set Loder or Spinner:
+const toggleSpinner = isLoding =>{
+    const loderSection = document.getElementById("loder");
+    if(isLoding){
+        loderSection.classList.remove("d-none");
+    }
+    else{
+        loderSection.classList.add("d-none");
+    }
+};
+// * Load Single Features Data--------:
 const loadFeatureDetails = id =>{
     const url = ` https://openapi.programming-hero.com/api/ai/tool/${id}`;
     fetch(url)
     .then(res => res.json())
     .then(details => displayFeatreDetails(details.data))
 }
+// * Display Single Feature Data on Modal--------:
 const displayFeatreDetails = (details) =>{
     const modalBody = document.getElementById("modal-body");
     modalBody.innerHTML = `
@@ -92,7 +122,7 @@ const displayFeatreDetails = (details) =>{
             <p>${details.input_output_examples[1].output}</p>
         </div>
     `;
-    console.log(details.input_output_examples[1].input)
+    console.log(details)
 }   
 
-loadFeatures();
+loadFeatures(6);
