@@ -7,6 +7,7 @@ const loadFeatures = (dataLimit) =>{
 };
 // * Display Features Data--------:
 const displayFeatres = (features , dataLimit) =>{
+    // features.sort((a, b) => new Date(b.published_in) - new Date(a.published_in))
     const featruesContainer = document.getElementById("features-container");
     featruesContainer.innerHTML = '';
     // * To display 6 Features by Default:
@@ -57,6 +58,13 @@ document.getElementById("see-more").addEventListener('click',function(){
     toggleSpinner(true);
     loadFeatures();
 })
+
+document.getElementById("sort-by-date").addEventListener("click",function(){
+    // toggleSpinner(true);
+    // loadFeatures();
+    
+});
+
 // * Set Loder or Spinner:
 const toggleSpinner = isLoding =>{
     const loderSection = document.getElementById("loder");
@@ -83,15 +91,15 @@ const displayFeatreDetails = (details) =>{
             <div class="d-flex flex-column d-md-flex flex-md-row gap-3 text-center justify-content-center">
                 <div id="cost1">
                     <p>${details.pricing ? details.pricing[0].price : "Free of cost"}</p>
-                    <p>${details.pricing  ? details.pricing[0].plan : "Basic"}</p>
+                    <p>${details.pricing ? details.pricing[0].plan  : "Basic"}</p>
                 </div>
                 <div id="cost2">
                     <p>${details.pricing ? details.pricing[1].price : "Free of cost"}</p>
-                    <p>${details.pricing ? details.pricing[1].plan : "Pro"}</p>
+                    <p>${details.pricing ? details.pricing[1].plan  : "Pro"}</p>
                 </div>
                 <div id="cost3">
                     <p>${details.pricing ? details.pricing[2].price : "Free of cost"}</p>
-                    <p>${details.pricing ? details.pricing[2].plan : "Enterprices"}</p>  
+                    <p>${details.pricing ? details.pricing[2].plan  : "Enterprices"}</p>  
                 </div>
             </div>
             <div class="d-flex my-2 gap-4">
@@ -122,7 +130,6 @@ const displayFeatreDetails = (details) =>{
             <p>${details.input_output_examples ? details.input_output_examples[0].output : "No! Not Yet! Take a break!!!"}</p>
         </div>
     `;
-    console.log( details.accuracy.score * 100 + "%")
 }   
 
 loadFeatures(6);
