@@ -109,6 +109,7 @@ const displayFeatreDetails = (details) =>{
                         <li>${details.features[1].feature_name}</li>
                         <li>${details.features[2].feature_name}</li>
                         <li>${details.features[3].feature_name}</li>
+                        <li>${details.features[4] ? details.features[4].feature_name : "No data found"}</li>
                     </ul>
                 </div>
                 <div>
